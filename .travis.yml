@@ -16,5 +16,5 @@ script:
 
 after_success: 
 - bash <(curl -s https://codecov.io/bash)
-- ! '[[ $TRAVIS_BRANCH == "master" && $TRAVIS_REPO_SLUG == "toolisticon/byoct"
+- ! '[[ $TRAVIS_BRANCH == "master" && $TRAVIS_REPO_SLUG == "toolisticon/byoct-jpa"
     && $TRAVIS_PULL_REQUEST == "false" ]] && { curl https://raw.githubusercontent.com/toolisticon/travis-configuration/master/settings.xml --location --create-dirs -o target/travis/settings.xml; }'
