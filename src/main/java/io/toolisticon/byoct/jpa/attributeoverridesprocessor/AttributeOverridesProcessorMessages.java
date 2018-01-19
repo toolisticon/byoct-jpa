@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.attributeoverridesprocessor;
 
 /**
- * Messages used by the {@link AttributeOverridesProcessorProcessor}.
+ * Messages used by the {@link AttributeOverridesProcessor}.
  */
 public enum AttributeOverridesProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private AttributeOverridesProcessorMessages(String code, String message) {
+    private AttributeOverridesProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum AttributeOverridesProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        AttributeOverridesProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

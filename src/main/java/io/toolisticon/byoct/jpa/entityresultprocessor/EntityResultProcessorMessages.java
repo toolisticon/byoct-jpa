@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.entityresultprocessor;
 
 /**
- * Messages used by the {@link EntityResultProcessorProcessor}.
+ * Messages used by the {@link EntityResultProcessor}.
  */
 public enum EntityResultProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private EntityResultProcessorMessages(String code, String message) {
+    private EntityResultProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum EntityResultProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        EntityResultProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

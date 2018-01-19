@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.postupdateprocessor;
 
 /**
- * Messages used by the {@link PostUpdateProcessorProcessor}.
+ * Messages used by the {@link PostUpdateProcessor}.
  */
 public enum PostUpdateProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private PostUpdateProcessorMessages(String code, String message) {
+    private PostUpdateProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum PostUpdateProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        PostUpdateProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

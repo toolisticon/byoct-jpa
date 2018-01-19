@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.secondarytableprocessor;
 
 /**
- * Messages used by the {@link SecondaryTableProcessorProcessor}.
+ * Messages used by the {@link SecondaryTableProcessor}.
  */
 public enum SecondaryTableProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private SecondaryTableProcessorMessages(String code, String message) {
+    private SecondaryTableProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum SecondaryTableProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        SecondaryTableProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

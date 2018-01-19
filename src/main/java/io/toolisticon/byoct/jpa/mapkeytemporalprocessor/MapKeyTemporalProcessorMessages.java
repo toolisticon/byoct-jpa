@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.mapkeytemporalprocessor;
 
 /**
- * Messages used by the {@link MapKeyTemporalProcessorProcessor}.
+ * Messages used by the {@link MapKeyTemporalProcessor}.
  */
 public enum MapKeyTemporalProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private MapKeyTemporalProcessorMessages(String code, String message) {
+    private MapKeyTemporalProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum MapKeyTemporalProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        MapKeyTemporalProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.preremoveprocessor;
 
 /**
- * Messages used by the {@link PreRemoveProcessorProcessor}.
+ * Messages used by the {@link PreRemoveProcessor}.
  */
 public enum PreRemoveProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private PreRemoveProcessorMessages(String code, String message) {
+    private PreRemoveProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum PreRemoveProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        PreRemoveProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.manytooneprocessor;
 
 /**
- * Messages used by the {@link ManyToOneProcessorProcessor}.
+ * Messages used by the {@link ManyToOneProcessor}.
  */
 public enum ManyToOneProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private ManyToOneProcessorMessages(String code, String message) {
+    private ManyToOneProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum ManyToOneProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        ManyToOneProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

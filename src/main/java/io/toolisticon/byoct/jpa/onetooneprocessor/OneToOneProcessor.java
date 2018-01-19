@@ -29,7 +29,7 @@ public class OneToOneProcessor extends AbstractAnnotationProcessor {
     }
 
     @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    public boolean processAnnotations(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
         for (Element element : roundEnv.getElementsAnnotatedWith(OneToOne.class)) {
 

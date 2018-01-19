@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.discriminatorcolumnprocessor;
 
 /**
- * Messages used by the {@link DiscriminatorColumnProcessorProcessor}.
+ * Messages used by the {@link DiscriminatorColumnProcessor}.
  */
 public enum DiscriminatorColumnProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private DiscriminatorColumnProcessorMessages(String code, String message) {
+    private DiscriminatorColumnProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum DiscriminatorColumnProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        DiscriminatorColumnProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.mapkeyjoincolumnprocessor;
 
 /**
- * Messages used by the {@link MapKeyJoinColumnProcessorProcessor}.
+ * Messages used by the {@link MapKeyJoinColumnProcessor}.
  */
 public enum MapKeyJoinColumnProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private MapKeyJoinColumnProcessorMessages(String code, String message) {
+    private MapKeyJoinColumnProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum MapKeyJoinColumnProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        MapKeyJoinColumnProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

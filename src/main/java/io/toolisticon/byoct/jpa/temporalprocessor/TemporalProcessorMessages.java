@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.temporalprocessor;
 
 /**
- * Messages used by the {@link TemporalProcessorProcessor}.
+ * Messages used by the {@link TemporalProcessor}.
  */
 public enum TemporalProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private TemporalProcessorMessages(String code, String message) {
+    private TemporalProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum TemporalProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        TemporalProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

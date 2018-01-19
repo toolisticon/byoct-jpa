@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.idprocessor;
 
 /**
- * Messages used by the {@link IdProcessorProcessor}.
+ * Messages used by the {@link IdProcessor}.
  */
 public enum IdProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private IdProcessorMessages(String code, String message) {
+    private IdProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum IdProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        IdProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

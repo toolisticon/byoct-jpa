@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.joincolumnsprocessor;
 
 /**
- * Messages used by the {@link JoinColumnsProcessorProcessor}.
+ * Messages used by the {@link JoinColumnsProcessor}.
  */
 public enum JoinColumnsProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private JoinColumnsProcessorMessages(String code, String message) {
+    private JoinColumnsProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum JoinColumnsProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        JoinColumnsProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

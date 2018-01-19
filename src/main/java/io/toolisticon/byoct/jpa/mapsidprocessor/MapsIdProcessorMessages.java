@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.mapsidprocessor;
 
 /**
- * Messages used by the {@link MapsIdProcessorProcessor}.
+ * Messages used by the {@link MapsIdProcessor}.
  */
 public enum MapsIdProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private MapsIdProcessorMessages(String code, String message) {
+    private MapsIdProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum MapsIdProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        MapsIdProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

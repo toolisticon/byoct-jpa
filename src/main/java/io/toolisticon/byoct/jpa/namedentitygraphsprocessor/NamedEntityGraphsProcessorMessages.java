@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.namedentitygraphsprocessor;
 
 /**
- * Messages used by the {@link NamedEntityGraphsProcessorProcessor}.
+ * Messages used by the {@link NamedEntityGraphsProcessor}.
  */
 public enum NamedEntityGraphsProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private NamedEntityGraphsProcessorMessages(String code, String message) {
+    private NamedEntityGraphsProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum NamedEntityGraphsProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        NamedEntityGraphsProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

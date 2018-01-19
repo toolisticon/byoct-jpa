@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.indexprocessor;
 
 /**
- * Messages used by the {@link IndexProcessorProcessor}.
+ * Messages used by the {@link IndexProcessor}.
  */
 public enum IndexProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private IndexProcessorMessages(String code, String message) {
+    private IndexProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum IndexProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        IndexProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

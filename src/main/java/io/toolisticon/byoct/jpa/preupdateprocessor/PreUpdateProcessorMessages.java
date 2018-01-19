@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.preupdateprocessor;
 
 /**
- * Messages used by the {@link PreUpdateProcessorProcessor}.
+ * Messages used by the {@link PreUpdateProcessor}.
  */
 public enum PreUpdateProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private PreUpdateProcessorMessages(String code, String message) {
+    private PreUpdateProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum PreUpdateProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        PreUpdateProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

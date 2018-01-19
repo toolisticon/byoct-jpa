@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.ordercolumnprocessor;
 
 /**
- * Messages used by the {@link OrderColumnProcessorProcessor}.
+ * Messages used by the {@link OrderColumnProcessor}.
  */
 public enum OrderColumnProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private OrderColumnProcessorMessages(String code, String message) {
+    private OrderColumnProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum OrderColumnProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        OrderColumnProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

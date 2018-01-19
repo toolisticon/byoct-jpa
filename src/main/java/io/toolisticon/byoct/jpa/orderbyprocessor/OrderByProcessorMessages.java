@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.orderbyprocessor;
 
 /**
- * Messages used by the {@link OrderByProcessorProcessor}.
+ * Messages used by the {@link OrderByProcessor}.
  */
 public enum OrderByProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private OrderByProcessorMessages(String code, String message) {
+    private OrderByProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum OrderByProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        OrderByProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

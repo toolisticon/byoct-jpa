@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.postpersistprocessor;
 
 /**
- * Messages used by the {@link PostPersistProcessorProcessor}.
+ * Messages used by the {@link PostPersistProcessor}.
  */
 public enum PostPersistProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private PostPersistProcessorMessages(String code, String message) {
+    private PostPersistProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum PostPersistProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        PostPersistProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

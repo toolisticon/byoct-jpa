@@ -1,7 +1,7 @@
 package io.toolisticon.byoct.jpa.entityprocessor;
 
 /**
- * Messages used by the {@link EntityProcessorProcessor}.
+ * Messages used by the {@link EntityProcessor}.
  */
 public enum EntityProcessorMessages {
 

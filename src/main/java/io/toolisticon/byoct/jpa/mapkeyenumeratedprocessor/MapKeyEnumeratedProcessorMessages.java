@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.mapkeyenumeratedprocessor;
 
 /**
- * Messages used by the {@link MapKeyEnumeratedProcessorProcessor}.
+ * Messages used by the {@link MapKeyEnumeratedProcessor}.
  */
 public enum MapKeyEnumeratedProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private MapKeyEnumeratedProcessorMessages(String code, String message) {
+    private MapKeyEnumeratedProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum MapKeyEnumeratedProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        MapKeyEnumeratedProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }

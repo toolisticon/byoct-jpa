@@ -1,17 +1,17 @@
 package io.toolisticon.byoct.jpa.convertprocessor;
 
 /**
- * Messages used by the {@link ConvertProcessorProcessor}.
+ * Messages used by the {@link ConvertProcessor}.
  */
 public enum ConvertProcessorMessages {
 
     ;
 
-    private static boolean printMessageCodes;
+    private static boolean printMessageCodes = false;
     private final String code;
     private final String message;
 
-    private ConvertProcessorMessages(String code, String message) {
+    private ConvertProcessorMessages(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
@@ -24,12 +24,8 @@ public enum ConvertProcessorMessages {
         return (printMessageCodes ? "[" + this.code + "] : " : "") + this.message;
     }
 
-    public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
-    }
-
-    static {
-        printMessageCodes = false;
+    public static void setPrintMessageCodes(final boolean printMessageCodes) {
+        ConvertProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
 }
