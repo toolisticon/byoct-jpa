@@ -5,7 +5,7 @@ package io.toolisticon.byoct.jpa.entityprocessor;
  */
 public enum EntityProcessorMessages {
 
-    ;
+    ERROR_NAME_MUST_NOT_BE_RESERVED_IDENTIFIER("ENTITY_ERROR_001", "Entity name attribute value (\"${0}\") must not be reserved identifier of JPQL.");
 
     private static boolean printMessageCodes;
     private final String code;
@@ -25,7 +25,7 @@ public enum EntityProcessorMessages {
     }
 
     public static void setPrintMessageCodes(boolean printMessageCodes) {
-        printMessageCodes = printMessageCodes;
+        EntityProcessorMessages.printMessageCodes = printMessageCodes;
     }
 
     static {

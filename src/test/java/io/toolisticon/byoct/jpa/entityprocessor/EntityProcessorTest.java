@@ -44,11 +44,11 @@ public class EntityProcessorTest extends AbstractAnnotationProcessorIntegrationT
                 // --------------------------------------------------------------
 
                 {
-                        "Test valid usage",
+                        "Test : compilation must fail if annotation is placed on interface",
                         AnnotationProcessorIntegrationTestConfigurationBuilder
                                 .createTestConfig()
-                                .setSourceFileToCompile("testcases/entityprocessor/type/testinterface/TestcaseValidUsage.java")
-                                .compilationShouldSucceed()
+                                .setSourceFileToCompile("testcases/entityprocessor/type/testinterface/TestcaseInvalidUsage.java")
+                                .compilationShouldFail()
                                 .build()
                 },
 
@@ -58,11 +58,11 @@ public class EntityProcessorTest extends AbstractAnnotationProcessorIntegrationT
                 // --------------------------------------------------------------
 
                 {
-                        "Test valid usage",
+                        "Test : compilation must fail if annotation is placed on enum",
                         AnnotationProcessorIntegrationTestConfigurationBuilder
                                 .createTestConfig()
-                                .setSourceFileToCompile("testcases/entityprocessor/type/testenum/TestcaseValidUsage.java")
-                                .compilationShouldSucceed()
+                                .setSourceFileToCompile("testcases/entityprocessor/type/testenum/TestcaseInvalidUsage.java")
+                                .compilationShouldFail()
                                 .build()
                 },
 
@@ -79,6 +79,25 @@ public class EntityProcessorTest extends AbstractAnnotationProcessorIntegrationT
                                 .compilationShouldSucceed()
                                 .build()
                 },
+                {
+                        "Test valid usage with valid name",
+                        AnnotationProcessorIntegrationTestConfigurationBuilder
+                                .createTestConfig()
+                                .setSourceFileToCompile("testcases/entityprocessor/type/testclass/TestcaseValidUsageWithValidName.java")
+                                .compilationShouldSucceed()
+                                .build()
+                },
+                {
+                        "Test valid usage",
+                        AnnotationProcessorIntegrationTestConfigurationBuilder
+                                .createTestConfig()
+                                .setSourceFileToCompile("testcases/entityprocessor/type/testclass/TestcaseInvalidUsageNameIsReservedIdentifier.java")
+                                .addMessageValidator()
+                                .setErrorChecks(EntityProcessorMessages.ERROR_NAME_MUST_NOT_BE_RESERVED_IDENTIFIER.getCode())
+                                .finishMessageValidator()
+                                .compilationShouldFail()
+                                .build()
+                },
 
                 
 
@@ -88,7 +107,6 @@ public class EntityProcessorTest extends AbstractAnnotationProcessorIntegrationT
 
 
     @Test
-    @Ignore
     public void testCorrectnessOfAdviceArgumentAnnotation() {
         super.test();
     }

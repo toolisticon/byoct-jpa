@@ -1,7 +1,13 @@
 package io.toolisticon.byoct.jpa.entityprocessor;
 
 import io.toolisticon.annotationprocessortoolkit.AbstractAnnotationProcessor;
+
+import javax.lang.model.element.ElementKind;
 import javax.persistence.Entity;
+
+import io.toolisticon.annotationprocessortoolkit.tools.characteristicsvalidator.Validators;
+import io.toolisticon.annotationprocessortoolkit.validators.FluentElementValidator;
+import io.toolisticon.byoct.jpa.CommonConstants;
 import io.toolisticon.spiap.api.Service;
 import io.toolisticon.spiap.api.OutOfService;
 
@@ -16,9 +22,9 @@ import java.util.Set;
 /**
  * Annotation processor for {@link Entity}.
  */
-@OutOfService
 @Service(Processor.class)
 public class EntityProcessor extends AbstractAnnotationProcessor {
+
 
 
     @Override
@@ -33,7 +39,20 @@ public class EntityProcessor extends AbstractAnnotationProcessor {
 
         for (Element element : roundEnv.getElementsAnnotatedWith(Entity.class)) {
 
-            // Add your own validation code here
+            // annotation must be applied to class
+            FluentElementValidator.createFluentElementValidator(element).applyValidator(Validators.ELEMENT_KIND_VALIDATOR).validateByOneOf(ElementKind.CLASS);
+
+            Entity entityAnnotation = element.getAnnotation(Entity.class);
+
+            // reserved literal in the Java Persistence query language
+            if (!entityAnnotation.name().isEmpty()) {
+                String uppercaseName = entityAnnotation.name().toUpperCase();
+                for (String reservedIdentifier : CommonConstants.UPPERCASED_RESERVED_IDENTIFIERS) {
+                    if (reservedIdentifier.equals(uppercaseName)) {
+                        getMessager().error(element, EntityProcessorMessages.ERROR_NAME_MUST_NOT_BE_RESERVED_IDENTIFIER.getMessage(), entityAnnotation.name());
+                    }
+                }
+            }
 
         }
 
