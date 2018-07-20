@@ -34,7 +34,7 @@ public class EntityProcessor extends AbstractAnnotationProcessor {
         for (Element element : roundEnv.getElementsAnnotatedWith(Entity.class)) {
 
             // annotation must be applied to class
-            FluentElementValidator.createFluentElementValidator(element).is(CoreMatchers.IS_CLASS);
+            FluentElementValidator.createFluentElementValidator(element).is(CoreMatchers.IS_CLASS).validateAndIssueMessages();
 
             Entity entityAnnotation = element.getAnnotation(Entity.class);
 
