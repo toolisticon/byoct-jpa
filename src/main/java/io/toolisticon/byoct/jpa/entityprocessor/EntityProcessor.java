@@ -1,22 +1,17 @@
 package io.toolisticon.byoct.jpa.entityprocessor;
 
 import io.toolisticon.annotationprocessortoolkit.AbstractAnnotationProcessor;
-
-import javax.lang.model.element.ElementKind;
-import javax.persistence.Entity;
-
-import io.toolisticon.annotationprocessortoolkit.tools.characteristicsvalidator.Validators;
-import io.toolisticon.annotationprocessortoolkit.validators.FluentElementValidator;
+import io.toolisticon.annotationprocessortoolkit.tools.MessagerUtils;
+import io.toolisticon.annotationprocessortoolkit.tools.corematcher.CoreMatchers;
+import io.toolisticon.annotationprocessortoolkit.tools.fluentvalidator.FluentElementValidator;
 import io.toolisticon.byoct.jpa.CommonConstants;
 import io.toolisticon.spiap.api.Service;
-import io.toolisticon.spiap.api.OutOfService;
 
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
-import javax.tools.StandardLocation;
+import javax.persistence.Entity;
 import java.util.Set;
 
 /**
@@ -24,7 +19,6 @@ import java.util.Set;
  */
 @Service(Processor.class)
 public class EntityProcessor extends AbstractAnnotationProcessor {
-
 
 
     @Override
@@ -40,7 +34,7 @@ public class EntityProcessor extends AbstractAnnotationProcessor {
         for (Element element : roundEnv.getElementsAnnotatedWith(Entity.class)) {
 
             // annotation must be applied to class
-            FluentElementValidator.createFluentElementValidator(element).applyValidator(Validators.ELEMENT_KIND_VALIDATOR).validateByOneOf(ElementKind.CLASS);
+            FluentElementValidator.createFluentElementValidator(element).is(CoreMatchers.IS_CLASS);
 
             Entity entityAnnotation = element.getAnnotation(Entity.class);
 
@@ -49,7 +43,7 @@ public class EntityProcessor extends AbstractAnnotationProcessor {
                 String uppercaseName = entityAnnotation.name().toUpperCase();
                 for (String reservedIdentifier : CommonConstants.UPPERCASED_RESERVED_IDENTIFIERS) {
                     if (reservedIdentifier.equals(uppercaseName)) {
-                        getMessager().error(element, EntityProcessorMessages.ERROR_NAME_MUST_NOT_BE_RESERVED_IDENTIFIER.getMessage(), entityAnnotation.name());
+                        MessagerUtils.error(element, EntityProcessorMessages.ERROR_NAME_MUST_NOT_BE_RESERVED_IDENTIFIER.getMessage(), entityAnnotation.name());
                     }
                 }
             }
